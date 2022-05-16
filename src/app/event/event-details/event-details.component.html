@@ -1,1 +1,49 @@
-<p>event-details works!</p>
+<main>
+    <!-- <h1 class="visually-hidden">Heroes examples</h1> -->
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold">{{event.title}}</h1>
+        <h3 class="display-8 fw-bold lh-1 mb-3 text-muted">{{event.event}}</h3>
+
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s
+                most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system,
+                extensive prebuilt components, and powerful JavaScript plugins.
+            </p>
+        </div>
+        <div class="overflow-hidden" style="">
+            <div class="container px-5">
+                <img src="../../../assets/images/3.jpg" class="img-fluid border rounded-3 shadow-lg mb-4"
+                    alt="Example image" width="700" height="500" loading="lazy">
+            </div>
+        </div>
+        <br>
+        <hr class="featurette-divider">
+        <h2>Main Speaker</h2>
+        <div class="container col-lg-4 d-block mx-lg-auto">
+            <img class="d-block mx-auto mb-4" src="../../../assets/images/p3.jpg" alt="" width="140" height="140">
+            <h2 class="fw-normal">{{event.mainSpeaker.email}}</h2>
+            <p>And lastly this, the third column of representative placeholder content.</p>
+            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div>
+        <br>
+        <hr class="featurette-divider">
+        <h2>Other Speakers</h2>
+        <div class="row">
+            <div *ngFor="let item of event.otherSpeakers" class="container col-lg-4 d-block mx-lg-auto">
+                <img class="d-block mx-auto mb-4" src="../../../assets/images/p3.jpg" alt="" width="140" height="140">
+                <h2 class="fw-normal">{{event.mainSpeaker.email}}</h2>
+                <p>And lastly this, the third column of representative placeholder content.</p>
+                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            </div>
+        </div>
+        <br>
+        <hr class="featurette-divider">
+
+        <h4 class="display-5 fw-bold">Number of Students who will attend this event.</h4>
+        <!-- <h3 class="display-8 fw-bold lh-1 mb-3 text-muted">{{event.event}}</h3> -->
+        <span class="circle">{{event.students.length}}</span>
+        <br>
+        <hr class="featurette-divider">
+    </div>
+</main>

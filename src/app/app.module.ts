@@ -34,7 +34,8 @@ import { LoginService } from './login.service';
     StudentService,
     SpeakerService,
     RegistrationService,
-    LoginService
+    LoginService,
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })

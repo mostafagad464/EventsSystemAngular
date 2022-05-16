@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventService } from 'src/app/event.service';
 import { Event } from 'src/app/_models/event';
 
@@ -9,46 +10,34 @@ import { Event } from 'src/app/_models/event';
 })
 export class ShowEventsComponent implements OnInit {
 
-  constructor(public eventService:EventService) { }
+  constructor(public eventService:EventService, public router:Router) { }
 
   events:Event[]=[];
+  flag:number=0;
 
   ngOnInit(): void {
     this.eventService.getAllEvents().subscribe(
       a=>
       {
         this.events = a;
-
-        // console.log(a);
         console.log(this.events);
-        // console.dir(a);
-        // console.log(a);
-        // this.events = Object.keys(a).map(b=> {return a[b];} );
-        // this.events = Object.entries(a).map(b=> {return a[b];} );
-        // for(let i=0; i<a.length; i++)
-        // {
-        //   this.events[i]._id=a[i]._id;
-        //   this.events[i].event=a[i].event;
-        //   this.events[i].title=a[i].title;
-        //   this.events[i].mainSpeaker=a[i].mainSpeaker;
-        //   this.events[i].otherSpeakers=a[i].otherSpeakers;
-        //   this.events[i].students=a[i].students;
-        //   console.log(a[i]);
-          
-        // }
-
-        
-        // console.log();
-        
-        
-
-        // console.log(this.events);
-        // console.log(a.);
-        // this.events.map(function(value:Event,index:number,evns:Event[])=>{});
-        // console.log(a);
       }
     )
-    //console.log(this.events);
   }
 
+  incrementflag()
+  {
+    this.flag+=1;
+  }
+
+  eventDetails(id:number)
+  {
+    this.router.navigate(['/events/details/'+id]);
+    // this.eventService.getEvent(_id).subscribe(
+    //   a=>{
+    //     console.log(a);
+    //   }
+    // )
+    //this.router.navigate(['/departments'])
+  }
 }

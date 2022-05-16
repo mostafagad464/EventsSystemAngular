@@ -17,5 +17,17 @@ export class EventService {
   createEvent(event:Event){
     return this.http.post<Event>(this.baseUrl, event);
   }
+  getEvent(id:number){
+    return this.http.get<Event>(this.baseUrl+"/"+id);
+  }
+  editEvent(id:number, event:Event){
+    return this.http.put<string>(this.baseUrl+"/"+id,event);
+  }
+  deleteEvent(id:number){
+    return this.http.delete<string>(this.baseUrl+"/"+id);
+  }
+  // editEventPeople(id:number, event:Event){
+  //   return this.http.put<string>(this.baseUrl+"/"+id,event);
+  // }
 
 }

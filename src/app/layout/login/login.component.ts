@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/login.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { LoginService } from 'src/app/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public logServ:LoginService) { }
+  constructor(public logServ:LoginService, public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
         if(a.status == 200)
         {
           console.log(a);
+          this.router.navigate(['']);
         }
         else
         {

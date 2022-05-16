@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { EventModule } from '../event/event.module';
 import { LayoutRoutingModule } from './layout.routing';
 import { FormsModule } from '@angular/forms';
+import { SpeakerModule } from '../speaker/speaker.module';
 
 
 
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule, 
     EventModule,
     LayoutRoutingModule,
-    FormsModule
+    FormsModule,
+    SpeakerModule
     
   ],
   exports: [

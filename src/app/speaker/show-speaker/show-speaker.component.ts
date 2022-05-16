@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SpeakerService } from 'src/app/speaker.service';
+import { Speaker } from 'src/app/_models/speaker';
 
 @Component({
   selector: 'app-show-speaker',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowSpeakerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public spkSrv:SpeakerService) { }
+
+  speakers:Speaker[]=[];
 
   ngOnInit(): void {
+    this.spkSrv.getAllSpeakers().subscribe(
+      a=>{
+        this.speakers = a;
+        console.log(a);
+        console.log(this.speakers);
+      }
+    )
   }
 
 }

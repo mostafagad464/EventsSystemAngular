@@ -1,29 +1,49 @@
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Event Date</th>
-            <th>Main Speaker</th>
-            <th>Other Speakers</th>
-            <th>Students</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of events ">
-            <td>{{item._id}}</td>
-            <td>{{item.title}}</td>
-            <td>{{item.event}}</td>
-            <td>{{item.mainSpeaker.email}}</td>
-            
-            <td>
-                {{item.otherSpeakers.length}}
-            </td>
-            
-            <td>
-                {{item.students.length}}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<br>
+<h1 class="text-center">Events</h1>
+<hr class="featurette-divider">
+<br>
+<div *ngFor="let item of events" class="container marketing">
+
+    <div *ngIf="item._id%2==1" class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">
+                {{item.title}}
+            </h2>
+            <h4 class="text-muted">Date: {{item.event}}</h4>
+            <p class="lead">
+                Some great placeholder content for the first featurette here. Imagine some exciting
+                prose here.
+            </p>
+            <p><a class="btn btn-secondary" (click)="eventDetails(item._id)">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-5">
+            <img src="../../../assets/images/5.png"
+                class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                focusable="false">
+        </div>
+    </div>
+    <div *ngIf="item._id%2==0" class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">{{item.title}}</h2>
+            <h4 class="text-muted">Date: {{item.event}}</h4>
+            <p class="lead">
+                Another featurette? Of course. More placeholder content here to give you an idea of how
+                this layout would work with some actual real-world content in place.
+            </p>
+            <p><a class="btn btn-secondary" (click)="eventDetails(item._id)">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img src="../../../assets/images/7.jpg"
+                class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                focusable="false">
+        </div>
+    </div>
+    <br>
+
+    <hr class="featurette-divider">
+    <br>
+</div>
+
