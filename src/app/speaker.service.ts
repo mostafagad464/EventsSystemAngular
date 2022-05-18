@@ -15,16 +15,16 @@ export class SpeakerService {
   getAllSpeakers(){
     return this.http.get<Speaker[]>(this.baseUrl);
   }
-  getSpeaker(id:number){
+  getSpeaker(id:string){
     return this.http.get<Speaker>(this.baseUrl+"/"+id);
   }
   createSpeaker(speaker:Speaker){
     return this.http.post<string>(this.baseUrl,speaker);
   }
-  editSpeaker( id:number,speaker:Speaker){
+  editSpeaker( id:string,speaker:Speaker){
     return this.http.put<string>(this.baseUrl+"/"+id,speaker);
   }
-  deleteSpeaker(id:number){
+  deleteSpeaker(id:string){
     return this.http.delete<Speaker>(this.baseUrl+"/"+id);
   }
 }

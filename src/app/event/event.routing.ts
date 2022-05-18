@@ -9,8 +9,8 @@ import { EventDetailsComponent } from "./event-details/event-details.component";
 const routes: Routes = [
     {path:"events",component:ShowEventsComponent},
     {path:"events/add",component:AddEventsComponent},
-    {path:"events/edit",component:EditEventsComponent},
-    {path:"events/delete",component:DeleteEventsComponent},
+    {path:"events/edit/:id",component:EditEventsComponent},
+    {path:"events/delete/:id",component:DeleteEventsComponent},
     {path:"events/details/:id",component:EventDetailsComponent},
 ]
 

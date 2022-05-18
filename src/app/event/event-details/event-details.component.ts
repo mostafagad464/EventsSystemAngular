@@ -17,10 +17,10 @@ export class EventDetailsComponent implements OnInit {
 
   id:number=0;
   // std:Student = new Student("", "", "");
-  speaker:Speaker = new Speaker("","","","",{city:"",street:"",building:""});
+  speaker:Speaker = new Speaker("","","","","",0,"",{city:"",street:"",building:""});
   students:Student [] = [];
   speakers:Speaker [] = []; 
-  event:Event = new  Event(0,"",new Date("2022/04/01"),this.speaker, this.speakers, this.students);
+  event:Event = new  Event(0,"","",new Date("2022/04/01"),this.speaker, this.speakers, this.students);
   
   ngOnInit(): void {
     this.route.params.subscribe(

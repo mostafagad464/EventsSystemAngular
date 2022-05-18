@@ -2,16 +2,26 @@
 
 
 
-<h1 class="text-center">Students</h1>
+
+<h1 class="text-center">Speakers</h1>
 <hr class="featurette-divider">
 
 <div class="container marketing text-center">
+    <button class="btn btn-primary" (click)="AddStudent()">Add Speaker</button>
+    <hr>
     <div class="row">
         <div *ngFor="let item of students" class="container col-lg-4 d-block mx-lg-auto">
             <img class="d-block mx-auto mb-4" src="../../../assets/images/p3.jpg" alt="" width="140" height="140">
-            <h2 class="fw-normal">{{item.email}}</h2>
-            <p>And lastly this, the third column of representative placeholder content.</p>
-            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            <h2 class="fw-normal">{{item.name}}</h2>
+            <p>
+                <!-- And lastly this, the third column of representative placeholder content. -->
+                {{item.bio}}
+            </p>
+            <p>
+                <a class="btn btn-secondary"(click)="studentDetails(item._id)">View details &raquo;</a>
+                <a class="btn btn-success" (click)="editStudent(item._id)">Edit</a>
+                <a class="btn btn-danger" (click)="deleteStudent(item._id)">Delete</a>
+            </p>
         </div>
     </div>
 </div>

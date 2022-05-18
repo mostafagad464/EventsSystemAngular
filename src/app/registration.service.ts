@@ -16,12 +16,13 @@ export class RegistrationService {
   registration(std:Student, spk:Speaker){
     if(spk.username =="")
     {
-      return this.http.post<string>(this.baseUrl, std);
+      return this.http.post<string>(this.baseUrl, std, {observe:'response'});
     }
     else 
     {
-      return this.http.post<string>(this.baseUrl, spk);
+      return this.http.post<string>(this.baseUrl, spk, {observe:'response'});
     }
   }
 
 }
+

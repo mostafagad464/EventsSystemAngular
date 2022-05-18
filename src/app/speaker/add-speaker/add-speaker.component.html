@@ -1,1 +1,64 @@
-<p>add-speaker works!</p>
+<br>
+<main class="container form-signin w-100 col-md-4 col-md-offset-4">
+    <div id="formdiv" class="container col-md-6 col-md-offset-6">
+        <!-- <img class="mb-4" src="" alt="" width="72" height="57"> -->
+        <h1 class="h3 mb-3 fw-normal text-center">Add Speaker</h1>
+        <div class="form-floating">
+            <input [(ngModel)]="speaker.name" type="text" class="form-control" id="name" >
+            <label for="name">Name</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input [(ngModel)]="speaker.username" type="text" class="form-control" id="username">
+            <label for="username">UserName</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input [(ngModel)]="speaker.email" type="email" class="form-control" id="email" placeholder="name@example.com">
+            <label for="email">Email</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input [(ngModel)]="speaker.age" type="number" class="form-control" id="age" >
+            <label for="age">Age</label>
+        </div>
+        <br>
+        <div class="form-floating ">
+            <input [(ngModel)]="speaker.password" type="password" class="form-control" id="password" placeholder="Password">
+            <label for="password">Password</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+            <label for="confirmPassword">Confirm Password</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input [(ngModel)]="speaker.bio" type="text" class="form-control" id="bio" >
+            <label for="bio">Bio</label>
+        </div>
+        <br>
+
+        <!-- <h4 class="text-center h3 mb-3 fw-normal">Address</h4> -->
+        <fieldset id="addressfieldset">
+            <legend>Address</legend>
+            <div class="form-floating">
+                <input [(ngModel)]="speaker.address.city" type="text" class="form-control" id="city" placeholder="City">
+                <label for="city">City</label>
+            </div>
+            <div class="form-floating">
+                <input [(ngModel)]="speaker.address.street" type="text" class="form-control" id="street"
+                    placeholder="Street">
+                <label for="street">Street</label>
+            </div>
+            <div class="form-floating">
+                <input [(ngModel)]="speaker.address.building" type="text" class="form-control" id="building"
+                    placeholder="Building">
+                <label for="building">Building</label>
+            </div>
+        </fieldset>
+        <br>
+        <button (click)="addSpeaker()" class="w-100 btn btn-lg btn-primary" type="submit">Add</button>
+    </div>
+</main>
+<br>

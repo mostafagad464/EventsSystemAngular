@@ -1,1 +1,55 @@
-<p>edit-events works!</p>
+
+<div class="container-fluid" >
+    <br>
+    <h1 class="text-center">Edit Event</h1>
+    <br>
+    <div class="row g-3">
+        <!-- <div class="col-md-6">
+            <label for="inputId" class="form-label">Event Id</label>
+            <input [(ngModel)]="event._id" type="text" class="form-control" id="inputId">
+        </div> -->
+        <div class="col-md-6">
+            <label for="inputTitle" class="form-label">Event Title</label>
+            <input [(ngModel)]="event.title" type="text" class="form-control" id="inputTitle">
+        </div>
+        <div class="col-md-6">
+            <label for="inputDescription" class="form-label">Event Description</label>
+            <input [(ngModel)]="event.description" type="text" class="form-control" id="inputDescription">
+        </div>
+        <div class="col-6">
+            <label for="inputDate" class="form-label">Event Date</label>
+            <input [(ngModel)]="event.event" type="date" class="form-control" id="inputDate" >
+        </div>
+    
+        <div class="col-md-6">
+            <label for="inputMainSpeaker" class="form-label">Main Speaker</label>
+            <select [(ngModel)]="event.mainSpeaker" id="inputMainSpeaker" class="form-select">
+                <option *ngFor="let item of speakers" value="{{item._id}}">{{item.email}}</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputOtherSpeakers" class="form-label">Other Speakers</label>
+            <select [(ngModel)]="event.otherSpeakers" multiple id="inputOtherSpeakers" class="form-select">
+                <option *ngFor="let item of speakers" value="{{item._id}}">{{item.email}}</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputStudents" class="form-label">Students</label>
+            <select type="number" [(ngModel)]="event.students" multiple id="inputStudents" class="form-select">
+                <!-- <option value="1">1</option> -->
+                <option *ngFor="let item of students" value="{{item._id}}" >{{item.email}}</option>
+
+            </select>
+        </div>
+
+        <div class="col-12 text-center" >
+            <button (click)="save()" type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+    <!-- </form> -->
+</div>
+
+
+

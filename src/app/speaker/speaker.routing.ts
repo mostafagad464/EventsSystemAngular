@@ -9,10 +9,10 @@ import { SpeakerDetailsComponent } from "./speaker-details/speaker-details.compo
 
 const routes: Routes = [
     {path:"speakers",component:ShowSpeakerComponent},
-    {path:"addspeaker",component:AddSpeakerComponent},
-    {path:"editspeaker",component:EditSpeakerComponent},
-    {path:"deletespeaker",component:DeleteSpeakerComponent},
-    {path:"speakerdetails",component:SpeakerDetailsComponent},
+    {path:"speakers/add",component:AddSpeakerComponent},
+    {path:"speakers/edit/:id",component:EditSpeakerComponent},
+    {path:"speakers/delete/:id",component:DeleteSpeakerComponent},
+    {path:"speakers/details/:id",component:SpeakerDetailsComponent},
 ]
 
 

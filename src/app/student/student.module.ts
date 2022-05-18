@@ -6,6 +6,7 @@ import { EditStudentComponent } from './edit-student/edit-student.component';
 import { DeleteStudentComponent } from './delete-student/delete-student.component';
 import { StudentRoutingModule } from './student.routing';
 import { StudentDetailsComponent } from './student-details/student-details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
   ],
   imports: [
     CommonModule,
-    StudentRoutingModule
+    StudentRoutingModule,FormsModule
   ],
   exports: [
     ShowStudentComponent,

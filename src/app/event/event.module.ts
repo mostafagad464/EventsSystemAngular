@@ -8,6 +8,7 @@ import { AddEventsInsStdComponent } from './add-events-ins-std/add-events-ins-st
 import { EventRoutingModule } from './event.routing';
 import { FormsModule } from '@angular/forms';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { SpeakerModule } from '../speaker/speaker.module';
 
 
 
@@ -23,7 +24,8 @@ import { EventDetailsComponent } from './event-details/event-details.component';
   imports: [
     CommonModule,
     EventRoutingModule,
-    FormsModule
+    FormsModule,
+    SpeakerModule
   ],
   exports: [
     ShowEventsComponent,

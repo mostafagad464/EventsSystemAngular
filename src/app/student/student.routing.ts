@@ -11,7 +11,7 @@ const routes: Routes = [
     {path:"students/add",component:AddStudentComponent},
     {path:"students/edit/:id",component:EditStudentComponent},
     {path:"students/delete/:id",component:DeleteStudentComponent},
-    {path:"students/details/id",component:StudentDetailsComponent},
+    {path:"students/details/:id",component:StudentDetailsComponent},
     
 ]
 

@@ -6,13 +6,17 @@
     <br>
     <!-- <form class="row g-3"> -->
     <div class="row g-3">
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
             <label for="inputId" class="form-label">Event Id</label>
             <input [(ngModel)]="event._id" type="text" class="form-control" id="inputId">
-        </div>
+        </div> -->
         <div class="col-md-6">
             <label for="inputTitle" class="form-label">Event Title</label>
             <input [(ngModel)]="event.title" type="text" class="form-control" id="inputTitle">
+        </div>
+        <div class="col-md-6">
+            <label for="inputDescription" class="form-label">Event Description</label>
+            <input [(ngModel)]="event.description" type="text" class="form-control" id="inputDescription">
         </div>
         <div class="col-6">
             <label for="inputDate" class="form-label">Event Date</label>
@@ -26,10 +30,7 @@
         <div class="col-md-6">
             <label for="inputMainSpeaker" class="form-label">Main Speaker</label>
             <select [(ngModel)]="event.mainSpeaker" id="inputMainSpeaker" class="form-select">
-                <!-- <option selected>Choose...</option> -->
-                <option>625f2780e23493a4e895a448</option>
-                <option>625f2d87413c625015c234e2</option>
-                <option>625f32fedc1a9a55525f329e</option>
+                <option *ngFor="let item of speakers" value="{{item._id}}">{{item.email}}</option>
             </select>
         </div>
         
@@ -37,21 +38,13 @@
         <div class="col-md-6">
             <label for="inputOtherSpeakers" class="form-label">Other Speakers</label>
             <select [(ngModel)]="event.otherSpeakers" multiple id="inputOtherSpeakers" class="form-select">
-                <!-- <option selected>Choose...</option> -->
-                <option>625f2780e23493a4e895a448</option>
-                <option>625f2d87413c625015c234e2</option>
-                <option>625f32fedc1a9a55525f329e</option>
+                <option *ngFor="let item of speakers" value="{{item._id}}">{{item.email}}</option>
             </select>
         </div>
         <div class="col-md-6">
             <label for="inputStudents" class="form-label">Students</label>
             <select type="number" [(ngModel)]="event.students" multiple id="inputStudents" class="form-select">
-                <!-- <option selected>Choose...</option> -->
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option *ngFor="let item of students" value="{{item._id}}" >{{item.email}}</option>
             </select>
         </div>
         

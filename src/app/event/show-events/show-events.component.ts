@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from 'src/app/event.service';
 import { Event } from 'src/app/_models/event';
@@ -24,6 +24,7 @@ export class ShowEventsComponent implements OnInit {
       }
     )
   }
+ 
 
   incrementflag()
   {
@@ -40,4 +41,14 @@ export class ShowEventsComponent implements OnInit {
     // )
     //this.router.navigate(['/departments'])
   }
+  editEvent(id:number){
+    this.router.navigate(['/events/edit/'+id]);
+  }
+  deleteEvent(id:number){
+    // this.router.navigate(['/events/delete/'+id]);
+    this.eventService.deleteEvent(id).subscribe(a=>console.log(a));
+    this.ngOnInit();
+  }
+
+
 }
