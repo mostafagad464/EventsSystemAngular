@@ -1,12 +1,22 @@
 export class Student {
     constructor(
-        public _id:number,
-        public email:string,
-        public username:string,
-        public name:string,
-        public bio:string,
-        public age:number,
-        public password:string,
-        public role:string = "student"
+        // public data:{
+        //      _id:"",
+        //      email:"",
+        //      username:"",
+        //      name:"",
+        //      bio:"",
+        //      age:0,
+        //      password:"",
+        // },
+        public _id:string="",
+        public email:string="",
+        public username:string="",
+        public name:string="",
+        public bio:string="",
+        public age:number=0,
+        public password:string="",
+        public role:string = "student",
+        public token: string ="",
     ){}
 }

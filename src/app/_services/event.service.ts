@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Event } from './_models/event';
+import { Event } from '../_models/event';
+import { UserService } from './user.service';
+import { User } from '../_models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  constructor(public http:HttpClient) { }
+  user:User=new User();
+
+  constructor(private http:HttpClient, private userSrv:UserService) { 
+    userSrv.user.subscribe(
+      s=>this.user=s
+    )
+  }
 
   baseUrl = "http://localhost:8080/events";
 

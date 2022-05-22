@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventService } from 'src/app/event.service';
+import { EventService } from 'src/app/_services/event.service';
 import { Speaker } from 'src/app/_models/speaker';
 import { Student } from 'src/app/_models/student';
 import { Event } from 'src/app/_models/event';
-import { StudentService } from 'src/app/student.service';
-import { SpeakerService } from 'src/app/speaker.service';
+import { StudentService } from 'src/app/_services/student.service';
+import { SpeakerService } from 'src/app/_services/speaker.service';
+import { UserService } from 'src/app/_services/user.service';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-edit-events',
@@ -14,9 +16,13 @@ import { SpeakerService } from 'src/app/speaker.service';
 })
 export class EditEventsComponent implements OnInit {
 
-  constructor(public route:ActivatedRoute, public eventServ:EventService, public stdSrv:StudentService, 
-    public spkSrv:SpeakerService, public router:Router) 
-    { }
+  constructor(private route:ActivatedRoute, private eventServ:EventService, private stdSrv:StudentService, 
+    private spkSrv:SpeakerService, private router:Router, private userSrv:UserService) 
+    { 
+      userSrv.user.subscribe(
+        s=>this.user = s
+      )
+    }
 
   id:number=0;
   speaker:Speaker = new Speaker("","","","","",0,"",{city:"",street:"",building:""});
@@ -25,7 +31,7 @@ export class EditEventsComponent implements OnInit {
   speakers:Speaker [] = []; 
   eventSpeakers:Speaker [] = []; 
   event:Event = new  Event(0,"","",new Date("2022/04/01"),this.speaker, this.eventSpeakers, this.eventStudents);
-
+  user:User= new User();
 
   ngOnInit(): void {
     this.route.params.subscribe(

@@ -1,62 +1,68 @@
-
-<br>
-<h1 class="text-center">Events</h1>
-<hr class="featurette-divider">
-<br>
-<div *ngFor="let item of events" class="container marketing">
-
-    <div *ngIf="item._id%2==1" class="row featurette">
-        
-        <div class="col-md-5">
-            <h2 class="featurette-heading fw-normal lh-1">
-                {{item.title}}
-            </h2>
-            <h4 class="text-muted">Date: {{item.event}}</h4>
-            <h4>Main Speaker: <span class="text-muted">{{item.mainSpeaker.email}}</span></h4>
-
-            <p class="lead">
-                {{item.description}}
-            </p>
-            <p>
-                <a class="btn btn-secondary" (click)="eventDetails(item._id)">View details &raquo;</a>
-                <a class="btn btn-success" (click)="editEvent(item._id)">Edit</a>
-                <a class="btn btn-danger" (click)="deleteEvent(item._id)">Delete</a>
-            </p>
-        </div>
-        <div class="col-md-7">
-            <img src="../../../assets/images/5.png"
-                class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                height="500" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
-                focusable="false">
-        </div>
-        
-    </div>
-
-    <div *ngIf="item._id%2==0" class="row featurette">
-        <div class="col-md-5 order-md-2">
-            <h2 class="featurette-heading fw-normal lh-1">{{item.title}}</h2>
-            <h4 class="text-muted">Date: {{item.event}}</h4>
-            <h4 class="text-muted">Main Speaker: {{item.mainSpeaker.email}}</h4>
-
-            <p class="lead">
-                {{item.description}}
-            </p>
-            <p>
-                <a class="btn btn-secondary" (click)="eventDetails(item._id)">View details &raquo;</a>
-                <a class="btn btn-success" (click)="editEvent(item._id)">Edit</a>
-                <a class="btn btn-danger" (click)="deleteEvent(item._id)">Delete</a>
-            </p>
-        </div>
-        <div class="col-md-7 order-md-1">
-            <img src="../../../assets/images/7.jpg"
-                class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                height="500" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
-                focusable="false">
-        </div>
-    </div>
-    <br>
-
+<div class="container text-center">
+    <h1 class="text-center">Events</h1>
     <hr class="featurette-divider">
-    <br>
-</div>
 
+    <button *ngIf="user && user.role=='admin'"  class="btn btn-primary" (click)="addEvent()">Add Event</button>
+
+    <hr *ngIf="user && user.role=='admin'" class="featurette-divider">
+    <br>
+    <div *ngFor="let item of events" class="container marketing">
+
+        <div *ngIf="item._id%2==1" class="row featurette">
+
+            <div class="col-md-5">
+                <h2 class="featurette-heading fw-normal lh-1">
+                    {{item.title}}
+                </h2>
+                <!-- <h4 class="text-muted">Date: {{item.event}}</h4> -->
+                <h4 class="text-muted">{{item.event}}</h4>
+                <h4>Main Speaker: <span class="">{{item.mainSpeaker.email}}</span></h4>
+
+                <p class="lead">
+                    {{item.description}}
+                </p>
+                <p>
+                    <a class="btn btn-secondary" (click)="eventDetails(item._id)">View details &raquo;</a>
+                    <a *ngIf="user && user.role=='admin'" class="btn btn-success" [routerLink]="['/events/edit/'+item._id]">Edit</a>
+                    <a *ngIf="user && user.role=='admin'" class="btn btn-danger" [routerLink]="['/events/delete/'+item._id]">Delete</a>
+                </p>
+            </div>
+            <div class="col-md-7">
+                <img src="../../../assets/images/5.png"
+                    class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                    height="500" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                    focusable="false">
+            </div>
+
+        </div>
+
+        <div *ngIf="item._id%2==0" class="row featurette">
+            <div class="col-md-5 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1">{{item.title}}</h2>
+                <!-- <h4 class="text-muted">Date: {{item.event}}</h4> -->
+                <h4 class="text-muted">{{item.event}}</h4>
+                <h4>Main Speaker: <span class="">{{item.mainSpeaker.email}}</span></h4>
+
+                <p class="lead">
+                    {{item.description}}
+                </p>
+                <p>
+                    <a class="btn btn-secondary" (click)="eventDetails(item._id)">View details &raquo;</a>
+                    <!-- <a *ngIf="user && user.role=='admin'" class="btn btn-success" (click)="editEvent(item._id)">Edit</a> -->
+                    <a *ngIf="user && user.role=='admin'" class="btn btn-success" [routerLink]="['/events/edit/'+item._id]" >Edit</a>
+                    <!-- <a *ngIf="user && user.role=='admin'" class="btn btn-danger" (click)="deleteEvent(item._id)">Delete</a> -->
+                    <a *ngIf="user && user.role=='admin'" class="btn btn-danger" [routerLink]="['/events/delete/'+item._id]">Delete</a>
+                </p>
+            </div>
+            <div class="col-md-7 order-md-1">
+                <img src="../../../assets/images/7.jpg"
+                    class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                    height="500" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice"
+                    focusable="false">
+            </div>
+        </div>
+        <br>
+        <hr class="featurette-divider">
+        <br>
+    </div>
+</div>

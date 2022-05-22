@@ -1,7 +1,9 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { EventService } from 'src/app/event.service';
+import { EventService } from 'src/app/_services/event.service';
 import { Event } from 'src/app/_models/event';
+import { UserService } from 'src/app/_services/user.service';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-show-events',
@@ -10,43 +12,44 @@ import { Event } from 'src/app/_models/event';
 })
 export class ShowEventsComponent implements OnInit {
 
-  constructor(public eventService:EventService, public router:Router) { }
+  constructor(private eventService: EventService, private router: Router, private userSrv: UserService) {
+    userSrv.user.subscribe(
+      s => this.user = s
+    )
+  }
 
-  events:Event[]=[];
-  flag:number=0;
+  events: Event[] = [];
+  flag: number = 0;
+  user: User = new User();
 
   ngOnInit(): void {
     this.eventService.getAllEvents().subscribe(
-      a=>
-      {
+      a => {
         this.events = a;
         console.log(this.events);
       }
     )
   }
- 
 
-  incrementflag()
-  {
-    this.flag+=1;
+
+  incrementflag() {
+    this.flag += 1;
   }
 
-  eventDetails(id:number)
-  {
-    this.router.navigate(['/events/details/'+id]);
-    // this.eventService.getEvent(_id).subscribe(
-    //   a=>{
-    //     console.log(a);
-    //   }
-    // )
-    //this.router.navigate(['/departments'])
+  addEvent() {
+    this.router.navigate(['/events/add']);
   }
-  editEvent(id:number){
-    this.router.navigate(['/events/edit/'+id]);
+
+  eventDetails(id: number) {
+    this.router.navigate(['/events/details/' + id]);
+
   }
-  deleteEvent(id:number){
+  editEvent(id: number) {
+    this.router.navigate(['/events/edit/' + id]);
+  }
+  async deleteEvent(id: number) {
     // this.router.navigate(['/events/delete/'+id]);
-    this.eventService.deleteEvent(id).subscribe(a=>console.log(a));
+    await this.eventService.deleteEvent(id).subscribe(a => console.log(a));
     this.ngOnInit();
   }
 

@@ -18,14 +18,15 @@ import { SpeakerModule } from '../speaker/speaker.module';
     FooterComponent,
     LoginComponent,
     RegistrationComponent,
-    HomeComponent
+    HomeComponent,
+    
   ],
   imports: [
     CommonModule, 
     EventModule,
     LayoutRoutingModule,
     FormsModule,
-    SpeakerModule
+    SpeakerModule,
     
   ],
   exports: [

@@ -1,13 +1,9 @@
 
 
-
-
-
-<h1 class="text-center">Speakers</h1>
-<hr class="featurette-divider">
-
-<div class="container marketing text-center">
-    <button class="btn btn-primary" (click)="AddStudent()">Add Speaker</button>
+<div *ngIf="user.role=='admin',else notAuth" class="container marketing text-center">
+    <h1 class="text-center">Students</h1>
+    <hr class="featurette-divider">
+    <button class="btn btn-primary" (click)="AddStudent()">Add Student</button>
     <hr>
     <div class="row">
         <div *ngFor="let item of students" class="container col-lg-4 d-block mx-lg-auto">
@@ -18,10 +14,16 @@
                 {{item.bio}}
             </p>
             <p>
-                <a class="btn btn-secondary"(click)="studentDetails(item._id)">View details &raquo;</a>
-                <a class="btn btn-success" (click)="editStudent(item._id)">Edit</a>
-                <a class="btn btn-danger" (click)="deleteStudent(item._id)">Delete</a>
+                <a class="btn btn-secondary" [routerLink]="['/students/details/'+item._id]">View details &raquo;</a>
+                <a class="btn btn-success" [routerLink]="['/students/edit/'+item._id]">Edit</a>
+                <a class="btn btn-danger" [routerLink]="['/students/delete/'+item._id]">Delete</a>
             </p>
         </div>
     </div>
 </div>
+
+<ng-template #notAuth>
+    <div class="contianer text-center">
+        <h1>Not Authorized page</h1>
+    </div>
+</ng-template>

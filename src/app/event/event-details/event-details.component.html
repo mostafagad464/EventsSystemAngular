@@ -1,7 +1,12 @@
 <main>
     <!-- <h1 class="visually-hidden">Heroes examples</h1> -->
-    <div class="px-4 py-5 my-5 text-center">
-        <h1 class="display-5 fw-bold">{{event.title}}</h1>
+    <div  class="px-4 py-5 my-5 text-center">
+        <div *ngIf="user && user.role=='admin'">
+            <a class="btn btn-success" [routerLink]="['/events/edit/'+event._id]">Edit</a>
+            || 
+            <a class="btn btn-danger" [routerLink]="['/events/delete/'+event._id]">Delete</a>
+        </div>
+                <h1 class="display-5 fw-bold">{{event.title}}</h1>
         <h3 class="display-8 fw-bold lh-1 mb-3 text-muted">{{event.event}}</h3>
 
         <div class="col-lg-6 mx-auto">
@@ -25,9 +30,9 @@
 
         <div class="container col-lg-4 d-block mx-lg-auto">
             <img class="d-block mx-auto mb-4" src="../../../assets/images/p3.jpg" alt="" width="140" height="140">
-            <h2 class="fw-normal">{{event.mainSpeaker.email}}</h2>
+            <h2 class="fw-normal">{{event.mainSpeaker.name}}</h2>
             <p>And lastly this, the third column of representative placeholder content.</p>
-            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" [routerLink]="['/speakers/details/'+event.mainSpeaker._id]">View details &raquo;</a></p>
         </div>
         <br>
 
@@ -36,9 +41,13 @@
         <div class="row">
             <div *ngFor="let item of event.otherSpeakers" class="container col-lg-4 d-block mx-lg-auto">
                 <img class="d-block mx-auto mb-4" src="../../../assets/images/p3.jpg" alt="" width="140" height="140">
-                <h2 class="fw-normal">{{event.mainSpeaker.email}}</h2>
+                <h2 class="fw-normal">{{item.name}}</h2>
                 <p>And lastly this, the third column of representative placeholder content.</p>
-                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                <p><a class="btn btn-secondary" [routerLink]="['/speakers/details/'+item._id]">View details &raquo;</a></p>
+
+                <!-- <a *ngIf="user && user.role=='admin'" class="btn btn-success" (click)="editEvent(item._id)">Edit</a>
+                <a *ngIf="user && user.role=='admin'" class="btn btn-danger" (click)="deleteEvent(item._id)">Delete</a> -->
+
             </div>
         </div>
         <br>
