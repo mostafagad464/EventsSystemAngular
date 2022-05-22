@@ -1,5 +1,5 @@
 
-<div class="container-fluid" >
+<div *ngIf="user.role=='admin'; else notAuth" class="container-fluid" >
     <br>
     <h1 class="text-center">Edit Event</h1>
     <br>
@@ -51,5 +51,8 @@
     <!-- </form> -->
 </div>
 
-
-
+<ng-template #notAuth>
+    <div class="container text-center">
+        <h1>Not Authorized Page </h1>
+    </div>
+</ng-template>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SpeakerService } from 'src/app/speaker.service';
+import { SpeakerService } from 'src/app/_services/speaker.service';
 import { Speaker } from 'src/app/_models/speaker';
+import { User } from 'src/app/_models/user';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-add-speaker',
@@ -10,8 +12,13 @@ import { Speaker } from 'src/app/_models/speaker';
 })
 export class AddSpeakerComponent implements OnInit {
 
-  constructor(public spkSrv:SpeakerService, public router:Router) { }
+  constructor(private spkSrv:SpeakerService, private router:Router, private userSrv:UserService) { 
+    userSrv.user.subscribe(
+      s=> this.user = s
+    )
+  }
   
+  user:User = new User();
   speaker:Speaker = new Speaker("","","","","",0,"",{city:"",street:"",building:""});
 
   ngOnInit(): void {

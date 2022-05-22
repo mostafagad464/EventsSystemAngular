@@ -1,10 +1,13 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { EventService } from 'src/app/event.service';
-import { SpeakerService } from 'src/app/speaker.service';
-import { StudentService } from 'src/app/student.service';
+import { Router } from '@angular/router';
+import { EventService } from 'src/app/_services/event.service';
+import { SpeakerService } from 'src/app/_services/speaker.service';
+import { StudentService } from 'src/app/_services/student.service';
 import { Event } from 'src/app/_models/event';
 import { Speaker } from 'src/app/_models/speaker';
 import { Student } from 'src/app/_models/student';
+import { UserService } from 'src/app/_services/user.service';
+import { User } from 'src/app/_models/user';
 
 
 @Component({
@@ -15,7 +18,11 @@ import { Student } from 'src/app/_models/student';
 export class AddEventsComponent implements OnInit, OnChanges {
 
 
-  constructor(public eventService:EventService, public stdSrv:StudentService, public spkSrv:SpeakerService) { }
+  constructor(private userSrv:UserService, private router:Router, private eventService:EventService, private stdSrv:StudentService, private spkSrv:SpeakerService) { 
+    userSrv.user.subscribe(
+      s=>this.user=s
+    )
+  }
   
   speaker:Speaker = new Speaker("","","","","",0,"",{city:"",street:"",building:""});
   speakers:Speaker[] = [];
@@ -25,6 +32,7 @@ export class AddEventsComponent implements OnInit, OnChanges {
   event:Event = new Event(0,"","",new Date("2022-01-01"),this.speaker,this.eventSpeakers,this.evevntStudents);
   eventId:number=0;
   temp:number=0;
+  user:User = new User();
 
 
   addEvent(){
@@ -37,6 +45,7 @@ export class AddEventsComponent implements OnInit, OnChanges {
         console.log(a);
       }
     )
+    this.router.navigate(['/events']);
   }
 
   ngOnInit(): void {

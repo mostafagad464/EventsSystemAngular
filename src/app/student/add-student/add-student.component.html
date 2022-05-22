@@ -1,5 +1,5 @@
 <br>
-<main class="container form-signin w-100 col-md-4 col-md-offset-4">
+<main *ngIf="user.role=='admin',else notAuth" class="container form-signin w-100 col-md-4 col-md-offset-4">
     <div id="formdiv" class="container col-md-6 col-md-offset-6">
         <!-- <img class="mb-4" src="" alt="" width="72" height="57"> -->
         <h1 class="h3 mb-3 fw-normal text-center">Add Student</h1>
@@ -42,3 +42,9 @@
     </div>
 </main>
 <br>
+
+<ng-template #notAuth>
+    <div class="contianer text-center">
+        <h1>Not Authorized page</h1>
+    </div>
+</ng-template>

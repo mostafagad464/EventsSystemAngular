@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SpeakerService } from 'src/app/speaker.service';
+import { SpeakerService } from 'src/app/_services/speaker.service';
 import { Speaker } from 'src/app/_models/speaker';
+import { UserService } from 'src/app/_services/user.service';
+import { User } from 'src/app/_models/user';
 
 @Component({
   selector: 'app-edit-speaker',
@@ -10,30 +12,44 @@ import { Speaker } from 'src/app/_models/speaker';
 })
 export class EditSpeakerComponent implements OnInit {
 
-  constructor(public spksrv:SpeakerService, public router:Router, public route:ActivatedRoute) { }
+  constructor(private spksrv: SpeakerService, private router: Router, private route: ActivatedRoute,
+    private userSrv:UserService
+  ) {
+    userSrv.user.subscribe(
+      s=> this.user = s
+    )
+  }
 
-  speaker:Speaker = new Speaker("","","","","",0,"",{city:"",street:"",building:""});
-  id:string="";
+  user:User = new User();
+  speaker: Speaker = new Speaker("", "", "", "", "", 0, "", { city: "", street: "", building: "" });
+  id: string = "";
 
   ngOnInit(): void {
     this.route.params.subscribe(
-      a=>{
+      a => {
         this.id = a["id"];
       }
     )
     this.spksrv.getSpeaker(this.id).subscribe(
-      a=>{
+      a => {
         this.speaker = a;
       }
     )
   }
 
-  save(){
-    this.spksrv.editSpeaker(this.id,this.speaker).subscribe(
-      a=>{
+  save() {
+    this.spksrv.editSpeaker(this.id, this.speaker).subscribe(
+      a => {
         console.log(a);
       }
     )
-    this.router.navigate(['/speakers']);
+    if(this.user.role=="admin")
+    {
+      this.router.navigate(['/speakers']);
+    }
+    else if(this.user._id = this.speaker._id)
+    {
+      this.router.navigate(['/speakers/details/'+this.speaker._id]);
+    }
   }
 }

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventService } from 'src/app/event.service';
+import { EventService } from 'src/app/_services/event.service';
 import { Event } from 'src/app/_models/event';
 import { Speaker } from 'src/app/_models/speaker';
 import { Student } from 'src/app/_models/student';
+import { UserService } from 'src/app/_services/user.service';
+import { User } from 'src/app/_models/user';
 
 
 @Component({
@@ -13,7 +15,12 @@ import { Student } from 'src/app/_models/student';
 })
 export class EventDetailsComponent implements OnInit {
 
-  constructor(public route:ActivatedRoute, public eventServ:EventService) { }
+  user:User = new User();
+  constructor(private route:ActivatedRoute, private eventServ:EventService, private userSrv:UserService) { 
+    userSrv.user.subscribe(
+      s=>this.user=s
+    )
+  }
 
   id:number=0;
   // std:Student = new Student("", "", "");
@@ -35,6 +42,13 @@ export class EventDetailsComponent implements OnInit {
         console.log(this.event);
       }
     )
+  }
+
+  editEvent(id:number){
+
+  }
+  deleteEvent(id:number){
+
   }
 
 
