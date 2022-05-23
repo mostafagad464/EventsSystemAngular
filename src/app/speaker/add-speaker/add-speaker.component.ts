@@ -25,8 +25,8 @@ export class AddSpeakerComponent implements OnInit {
   }
 
 
-  addSpeaker(){
-    this.spkSrv.createSpeaker(this.speaker).subscribe(
+  async addSpeaker(){
+    await this.spkSrv.createSpeaker(this.speaker).subscribe(
       a=>console.log(a)
     )
     this.router.navigate(['/speakers']);

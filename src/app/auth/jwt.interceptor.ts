@@ -29,17 +29,38 @@ export class JwtInterceptor implements HttpInterceptor {
     // const stdIsLoggedIn = std && std.token;
     // const admIsLoggedIn = adm && adm.token;
     
+
     const isLoggedIn = user && user.token;
+    
 
-    const isApiUrl = request.url.startsWith("http://localhost:4000");
+    // const isApiUrl = request.url.startsWith("http://localhost:8080");
+    // alert ("Inside JWT Inseptor");
 
-    if(isLoggedIn && isApiUrl){
+    // if(isLoggedIn && isApiUrl){
+    if(isLoggedIn){
+    // if(user.isLogged){
+      // request.headers.append("Authorization",`Baarer${user.token}`);
       request = request.clone({
-        setHeaders:{
-          Authorization:`Baarer${user.token}`
-        }
+        headers:request.headers.set("Authorization",`Baarer ${user.token}`)
+
+        // headers:{
+        //   `Baarer ${user.token}`
+        // },
+        // Authorization:`Baarer ${user.token}`
+        // setHeaders:{
+        //   Authorization:`Baarer ${user.token}`
+        //   // Authorization:user.token
+        // }
       });
+      console.log(`Baarer ${user.token}`);
+      console.log(request);
+      console.log(request.headers);
+
+      // alert ("Inside JWT Condition");
+
     }
+
+
 
     // if(spkIsLoggedIn && isApiUrl){
     //   request = request.clone({
