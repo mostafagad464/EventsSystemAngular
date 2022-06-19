@@ -23,15 +23,15 @@
             <label for="age">Age</label>
         </div>
         <br>
-        <div class="form-floating ">
+        <div *ngIf="user.role=='student'" class="form-floating ">
             <input [(ngModel)]="student.password" type="password" class="form-control" id="password" placeholder="Password">
             <label for="password">Password</label>
         </div>
-        <br>
-        <div class="form-floating">
+        <!-- <br> -->
+        <!-- <div class="form-floating">
             <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
             <label for="confirmPassword">Confirm Password</label>
-        </div>
+        </div> -->
         <br>
         <div class="form-floating">
             <input [(ngModel)]="student.bio" type="text" class="form-control" id="bio" >

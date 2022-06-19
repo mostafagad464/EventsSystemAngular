@@ -7,9 +7,9 @@
             {{speaker.bio}}
         </p>
         <h1 class="display-8 fw-bold"> {{speaker.email}} </h1>
-        <p class="col-md-12 fs-4">
+        <!-- <p class="col-md-12 fs-4">
             {{speaker.address.city}} : {{speaker.address.street}} : {{speaker.address.building}}
-        </p>
+        </p> -->
         <div *ngIf="user && (user.role == 'admin' || user._id == speaker._id)">
             <a class="btn btn-success" [routerLink]="['/speakers/edit/'+speaker._id]">Edit</a>
             <a class="btn btn-danger" [routerLink]="['/speakers/delete/'+speaker._id]">Delete</a>

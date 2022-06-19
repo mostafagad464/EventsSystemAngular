@@ -32,7 +32,11 @@
             <img class="d-block mx-auto mb-4" src="../../../assets/images/p3.jpg" alt="" width="140" height="140">
             <h2 class="fw-normal">{{event.mainSpeaker.name}}</h2>
             <p>And lastly this, the third column of representative placeholder content.</p>
-            <p><a class="btn btn-secondary" [routerLink]="['/speakers/details/'+event.mainSpeaker._id]">View details &raquo;</a></p>
+            <p>
+                <a class="btn btn-secondary" [routerLink]="['/speakers/details/'+event.mainSpeaker._id]">View details &raquo;</a>
+                <!-- Speaaker Declice hemself -->
+                <!-- <a class="btn btn-secondary" [routerLink]="['/speakers/details/'+event.mainSpeaker._id]">View details &raquo;</a> -->
+            </p>
         </div>
         <br>
 

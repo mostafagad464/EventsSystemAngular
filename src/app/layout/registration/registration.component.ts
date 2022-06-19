@@ -69,7 +69,7 @@ export class RegistrationComponent implements OnInit {
     }
 
     // this.std._id = ""+this.stdId;
-    console.log(this.spk,"-----------", this.std);
+    // console.log(this.spk,"-----------", this.std);
 
     this.userServ.register(this.user).subscribe(
       a=>{
